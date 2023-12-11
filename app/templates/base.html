@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href={% static 'css/style.css' %}>
+</head>
+
+<body style="background-image: url('../../static/images/99px Lake.jpg'); background-size: cover;">
+    
+    
+    <div class="navbar">
+        <a class="navbar_items" href={% url 'post_list' %}>Объявления</a>
+        {% if request.user.is_authenticated %}
+            <p class="navbar_items">Пользователь: {{ request.user.username }}</p>
+            <a class="navbar_items" href={% url 'logout' %}>Выйти</a>
+        {% else %}
+            <a class="navbar_items" href={% url 'login' %}>Войти на сайт</a>
+            <a class="navbar_items" href={% url 'signup' %}>Регистрация</a>
+        {% endif %}
+    </div>
+    <br>
+    {% block content %}
+
+    {% endblock %}
+</body>
+
+</html>

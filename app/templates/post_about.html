@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main_platform">
+        <div class="main_block">
+            <div class="post_about_block">
+                <div>
+                    <h3>{{ post.title }}</h3>
+                    <ul>
+                        <li>{{ post.content }}</li>
+                        <li>Автор поста: {{ post.author }}</li>
+                        <li>Создано: {{ post.created_at }}</li>
+                        <li>Продавец: {{ post.author }}</li>
+                    </ul>
+                </div>
+                <div>
+                    <img class="post_about_images" src="{{ post.image.url }}" alt="post_image">
+                </div>
+            </div>
+            <br>
+            <div>
+                <h3>Комментарии</h3>
+                {% for i in one %}
+                <p><b>{{ i.author }}: </b>{{ i.content }}</p>
+                {% endfor %}
+            </div>
+            {% if request.user == post.author %}
+            <div class="create_delete_block">
+            <a class="create_button" href={% url 'comment_create' %}?post={{post.id}}>Создать комментарий</a>
+            <a class="create_button" href={% url 'post_update' post.pk %}>Редактировать</a>
+            <a class="delete_button" href={% url 'post_delete' post.pk %}>Удалить</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main_platform">
+        <div class="main_block">
+            <h3>Список публикаций</h3>
+            <ul class="home_grid">
+                {% for i in posts %}
+                    <div class="home_grid_elements">
+                        <div class="in_home_grid_elements">
+                            <a class="post_link" href={% url 'post_about' i.pk %}>
+                                <li>{{ i.title }}</li>
+                                <li>{{ i.author }}</li>
+                                <img class="home_images" src="{{ i.image.url }}" alt="post_image">
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+            <div class="main_platform">
+                <a class="create_button" style="text-decoration: none; color: white;" href={% url 'post_create' %}>Создать объявление</a>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

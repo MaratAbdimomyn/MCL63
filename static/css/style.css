@@ -1,0 +1,201 @@
+body {
+    background-color: rgb(46, 46, 95);
+    margin: 0px;
+    padding: 0px;
+}
+
+.main_cover {
+    margin: 0px;
+    padding: 0px;
+    height: 150px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    opacity: 40%;
+    background-color: black;
+}
+
+.navbar_items {
+    font-family: Arial;
+    color: white;
+    text-decoration: none;
+    opacity: 100%;
+    margin-right: 40px;
+}
+
+.navbar_title {
+    font-family: Arial;
+    color: white;
+    position: absolute;
+    top: 16px;
+    margin-left: 30px;
+}
+
+.main_platform {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.main_block {
+    background-color: rgb(47, 48, 77);
+    margin: 100px;
+    width: 72%;
+    border-radius: 10px;
+    padding: 30px;
+    font-family: Arial;
+    opacity: 90%;
+    color: white;
+}
+
+.mini_block {
+    background-color: rgb(54, 77, 47);
+    margin: 100px;
+    border-radius: 10px;
+    padding: 30px;
+    font-family: Arial;
+    opacity: 90%;
+    color: white;
+}
+
+input {
+    border-radius: 5px;
+    border: none;
+}
+
+select {
+    border-radius: 5px;
+    border: none;
+}
+
+.category_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.category_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-right: 15px;
+    border-radius: 5px;
+    background-color: rgb(80, 156, 255);
+    color: white;
+    text-decoration: none;
+}
+
+.create_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgb(80, 156, 255);
+    color: white;
+    text-decoration: none;
+}
+
+.delete_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgb(238, 54, 54);
+    color: white;
+    text-decoration: none;
+}
+
+table {
+    margin: 20px;
+}
+
+textarea {
+    border-radius: 5px;
+    border: none;
+}
+
+.post_link {
+    color: white;
+    text-decoration: none;
+    font-family: Arial;
+}
+
+.home_grid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.home_grid_elements {
+    width: 220px;
+    height: 220px;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 20px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.home_images {
+    width: 170px;
+    height: 115px;
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.in_home_grid_elements {
+    position: relative;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+.create_delete_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.post_about_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.post_about_images {
+    width: 400px;
+    height: 250px;
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
