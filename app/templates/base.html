@@ -14,7 +14,7 @@
     
     
     <div class="navbar">
-        <a class="navbar_items" href={% url 'post_list' %}>Объявления</a>
+        <a class="navbar_items" href={% url 'post_list' %}>Публикации</a>
         {% if request.user.is_authenticated %}
             <p class="navbar_items">Пользователь: {{ request.user.username }}</p>
             <a class="navbar_items" href={% url 'logout' %}>Выйти</a>

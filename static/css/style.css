@@ -163,11 +163,12 @@ textarea {
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
+    margin-top: 15px;
 }
 
 .in_home_grid_elements {
     position: relative;
-    top: 25px;
+    top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -181,7 +182,13 @@ li {
 .create_delete_block {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
+}
+
+.create_comment_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
 }
 
 .post_about_block {
