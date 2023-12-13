@@ -123,3 +123,22 @@ class CreateCommentView(CreateView):
             self.object.save()
             return super().form_valid(form)
         
+class DetailCommentView(DetailView):
+    model = Comment
+    template_name = 'comment_about.html'
+    context_object_name = 'comment'
+
+class UpdateCommentView(UpdateView):
+    model = Comment
+    form_class = CommentCreateForm
+    template_name = 'comment_update.html'
+    pk_url_kwarg = 'id'
+    success_url = reverse_lazy('post_list')
+        
+class DeleteCommentView(DeleteView):
+    model = Comment
+    template_name = 'comment_delete.html'
+    pk_url_kwarg = 'id'
+    success_url = reverse_lazy('post_list')
+    context_object_name = 'comment_delete_confirm'
+

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="mini_block">
-    <h3>Удалить {{ post_delete_confirm.title }}?</h3>
+    <h3>Удалить {{ comment_delete_confirm.content }}?</h3>
     <form method="POST">
         {% csrf_token %}
         <button class="create_button" type="submit">Удалить</button>

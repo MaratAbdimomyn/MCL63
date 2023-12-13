@@ -27,7 +27,7 @@
             <div>
                 <h3>Комментарии</h3>
                 {% for i in one %}
-                <p><b>{{ i.author }}: </b>{{ i.content }}</p>
+                <p><b>{{ i.author }}: </b>{{ i.content }} {% if request.user == i.author %} <a style="color: coral; font-size: small;" class="post_link" href={% url 'comment_about' i.pk %}>Редактировать</a>{% endif %}</p>
                 {% endfor %}
             </div>
             <div class="create_comment_block">

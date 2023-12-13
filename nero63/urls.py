@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from app.views import *
 from django.conf import settings
 from django.conf.urls.static import static
@@ -18,4 +18,7 @@ urlpatterns = [
     path('post_about/<int:pk>/', DetailPostView.as_view(), name='post_about'),
     path('post_delete/<int:pk>/', DeletePostView.as_view(), name='post_delete'),
     path('comment_create/', CreateCommentView.as_view(), name='comment_create'),
+    path('comment_about/<int:pk>/', DetailCommentView.as_view(), name='comment_about'),
+    re_path(r'^update/(?P<id>\d+)/$', UpdateCommentView.as_view(), name='comment_update'),
+    re_path(r'^delete/(?P<id>\d+)/$', DeleteCommentView.as_view(), name='comment_delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

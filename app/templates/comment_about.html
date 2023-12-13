@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main_platform">
+        <div class="main_block">
+            <p>Автор: {{ comment.author }}</p>
+            <p>Комментарий: {{ comment.content }}</p>
+            <div class="create_delete_block">
+                <a style="margin-right: 13px;" class="create_button" href={% url 'comment_update' comment.pk %}>Редактировать</a>
+                <a style="margin-right: 13px;" class="delete_button" href={% url 'comment_delete' comment.pk %}>Удалить</a>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
