@@ -74,11 +74,12 @@ class PostListView(ListView):
     template_name = 'post_list.html'
     context_object_name = 'posts'
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostCreateForm
     template_name = 'post_create.html'
     success_url = reverse_lazy('post_list')
+    login_url = reverse_lazy('login')
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -91,6 +92,13 @@ class UpdatePostView(LoginRequiredMixin, UpdateView):
     form_class = PostCreateForm
     template_name = 'post_update.html'
     success_url = reverse_lazy('post_list')
+    login_url = reverse_lazy('login')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.user != kwargs['instance'].author:
+            return self.handle_no_permission()
+        return kwargs
 
 class DetailPostView(DetailView):
     model = Post
@@ -107,8 +115,14 @@ class DeletePostView(DeleteView):
     template_name = 'post_delete.html'
     success_url = reverse_lazy('post_list')
     context_object_name = 'post_delete_confirm'
+    
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.user != kwargs['instance'].author:
+            return self.handle_no_permission()
+        return kwargs
 
-class CreateCommentView(CreateView):
+class CreateCommentView(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentCreateForm
     template_name = 'comment_create.html'
@@ -134,6 +148,12 @@ class UpdateCommentView(UpdateView):
     template_name = 'comment_update.html'
     pk_url_kwarg = 'id'
     success_url = reverse_lazy('post_list')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.user != kwargs['instance'].author:
+            return self.handle_no_permission()
+        return kwargs
         
 class DeleteCommentView(DeleteView):
     model = Comment
@@ -142,3 +162,8 @@ class DeleteCommentView(DeleteView):
     success_url = reverse_lazy('post_list')
     context_object_name = 'comment_delete_confirm'
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.user != kwargs['instance'].author:
+            return self.handle_no_permission()
+        return kwargs
