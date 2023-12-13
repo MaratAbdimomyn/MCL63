@@ -23,3 +23,10 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+    
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
+    posts = models.ManyToManyField(Post, related_name='favorite', null=True, blank=True)
+
+    def __str__(self):
+        return self.user
