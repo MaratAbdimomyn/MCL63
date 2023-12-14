@@ -73,6 +73,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'post_list.html'
     context_object_name = 'posts'
+    paginate_by = 4
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -116,11 +117,12 @@ class DeletePostView(DeleteView):
     success_url = reverse_lazy('post_list')
     context_object_name = 'post_delete_confirm'
     
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        if self.request.user != kwargs['instance'].author:
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.author
+        self.request.user
+        if self.request.user != kwargs['instance'.author]:
             return self.handle_no_permission()
-        return kwargs
 
 class CreateCommentView(LoginRequiredMixin, CreateView):
     model = Comment
@@ -155,15 +157,17 @@ class UpdateCommentView(UpdateView):
             return self.handle_no_permission()
         return kwargs
         
-class DeleteCommentView(DeleteView):
+class DeleteCommentView(LoginRequiredMixin, DeleteView):
     model = Comment
     template_name = 'comment_delete.html'
     pk_url_kwarg = 'id'
     success_url = reverse_lazy('post_list')
     context_object_name = 'comment_delete_confirm'
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        if self.request.user != kwargs['instance'].author:
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.author
+        self.request.user
+        if self.request.user != kwargs['instance'.author]:
             return self.handle_no_permission()
-        return kwargs
+        
